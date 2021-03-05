@@ -20,7 +20,6 @@ nav {
 
   .searchIcon,
   .userIcon {
-    width: 20px;
     cursor: pointer;
   }
 
@@ -28,7 +27,7 @@ nav {
     width: 40%;
     background-color: #393939;
     border-radius: 2rem;
-    padding-right: 1rem;
+    padding-right: 2rem;
     padding-left: 1rem;
 
     input {
@@ -42,9 +41,43 @@ nav {
     }
 
     .searchIcon {
+      width: 20px;
       position: absolute;
       top: 0.4rem;
       right: 0.5rem;
+    }
+  }
+
+  .userDetails {
+    display: flex;
+    align-items: center;
+
+    .userIcon {
+      width: 30px;
+      height: 30px;
+      line-height: 1.7rem;
+      border-radius: 50%;
+      background-color: #e05959;
+      color: #fff;
+      text-align: center;
+      margin-right: 0.5rem;
+
+      svg {
+        width: 20px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+
+    .logo {
+      width: 75px;
+    }
+
+    .welcomeMessage {
+      display: none;
     }
   }
 }

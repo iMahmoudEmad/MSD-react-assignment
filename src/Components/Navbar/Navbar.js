@@ -15,13 +15,15 @@ const Navbar = ( props ) => {
             <img className="logo" src={ logo } alt={ productName } />
 
             <div className="searchInput">
-                <input type="search" value={ searchVal } placeholder="Search..." onChange={ e => detectSearchValue( e ) } />
+                <input type="text" value={ searchVal } placeholder="Search..." onChange={ e => detectSearchValue( e ) } />
                 <Search className="searchIcon" title="Search" role="button" />
             </div>
 
             <div className="userDetails">
-                <Person className="userIcon" role="button" />
-                <span>welcome to { productName }</span>
+                <div className="userIcon">
+                    <Person role="button" />
+                </div>
+                <span className="welcomeMessage">welcome to { productName }</span>
             </div>
         </nav>
     )
