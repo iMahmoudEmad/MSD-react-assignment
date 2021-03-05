@@ -1,0 +1,50 @@
+@import "../../assets/styles/main.scss";
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+  background-color: $gray;
+  color: $light-gray;
+
+  .logo {
+    width: 150px;
+  }
+
+  .searchInput,
+  .userDetails {
+    position: relative;
+  }
+
+  .searchIcon,
+  .userIcon {
+    width: 20px;
+    cursor: pointer;
+  }
+
+  .searchInput {
+    width: 40%;
+    background-color: #393939;
+    border-radius: 2rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+
+    input {
+      width: 100%;
+      background-color: transparent;
+      border: none;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      outline: none;
+      color: $light-gray;
+    }
+
+    .searchIcon {
+      position: absolute;
+      top: 0.4rem;
+      right: 0.5rem;
+    }
+  }
+}
