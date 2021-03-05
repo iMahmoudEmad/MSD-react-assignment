@@ -1,21 +1,17 @@
-import { useState } from 'react'
 import './Navbar.scss'
 import logo from './../../assets/images/logo.png'
 import { Search } from '@emotion-icons/material/Search'
 import { Person } from '@emotion-icons/material/Person'
 
-const Navbar = ( props ) => {
-    const productName = "ViuLive"
-    const [ searchVal, setSearchVal ] = useState( '' )
-
-    const detectSearchValue = ( e ) => setSearchVal( e.target.value )
+const Navbar = ({ searchVal, changeSearchVal }) => {
+    const productName = "ViuLive";
 
     return (
         <nav>
             <img className="logo" src={ logo } alt={ productName } />
 
             <div className="searchInput">
-                <input type="text" value={ searchVal } placeholder="Search..." onChange={ e => detectSearchValue( e ) } />
+                <input type="text" value={ searchVal } placeholder="Search..." onChange={ changeSearchVal } />
                 <Search className="searchIcon" title="Search" role="button" />
             </div>
 
