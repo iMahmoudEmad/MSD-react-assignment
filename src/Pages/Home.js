@@ -1,10 +1,9 @@
 import Layout from '../Components/Layout/Layout'
-import Rating from '../Components/Rating/Rating'
 
 const Home = () => {
     return (
         <Layout>
-            <Rating />
+            <h1>Home</h1>
         </Layout>
     )
 }
