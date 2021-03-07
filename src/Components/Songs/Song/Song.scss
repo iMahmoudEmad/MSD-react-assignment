@@ -1,27 +1,27 @@
 @import "../../../assets/styles/main.scss";
 
-.song {
-  background-color: $gray;
+.song,
+.songDetails {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+}
+
+.song {
+  background-color: $gray;
   margin-bottom: 1rem;
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
-  padding-right: 1rem;
 
-  .songDetails,
-  .songRate {
-    display: flex;
-    flex-wrap: wrap;
+  img {
+    width: 8rem;
+    background-color: $gray;
   }
 
   .songDetails {
-    img {
-      width: 8rem;
-      background-color: $gray;
-    }
+    width: calc(100% - 9rem);
+    padding-right: 1rem;
 
     .songDetailsTitle {
       padding-left: 1rem;
@@ -46,7 +46,15 @@
     }
   }
 
-  .songRate .star-ratings {
-    margin-right: 2rem;
+  .songRate {
+    svg {
+      width: 25px;
+      cursor: pointer;
+      color: $light-gray;
+    }
+
+    .star-ratings {
+      margin-right: 2rem;
+    }
   }
 }
