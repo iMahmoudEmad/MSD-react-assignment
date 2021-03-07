@@ -1,6 +1,6 @@
 import StarRating from 'react-star-ratings'
 
-const Rating = ({ starPoints }) => {
+const Rating = ({ starPoints, starColor }) => {
     const convertPointsToStar = (point = 0) => point / 3;
 
     return (
@@ -8,7 +8,7 @@ const Rating = ({ starPoints }) => {
             name="rating"
             rating={ convertPointsToStar(starPoints) }
             totalStars={ 15 }
-            starRatedColor={ 'red' }
+            starRatedColor={ starColor }
             starEmptyColor='gray'
             starDimension='20'
             starSpacing={ '10px' }
