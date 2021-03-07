@@ -13,7 +13,7 @@ const Song = ({ song, inFavorite }) => {
 
     const checkIfSongAddedToFavorite = () => {
         if (isFavorite) {
-            return <FavoriteBorder role="button" title="Added to favorite" />
+            return <FavoriteBorder role="button" title="Add to favorite" />
         } else {
             return <Favorite role="button" title="Remove from favorite" />
         }
