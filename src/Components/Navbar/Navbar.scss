@@ -18,17 +18,13 @@ nav {
     position: relative;
   }
 
-  .searchIcon,
-  .userIcon {
-    cursor: pointer;
-  }
-
   .searchInput {
     width: 40%;
     background-color: #393939;
     border-radius: 2rem;
     padding-right: 2rem;
     padding-left: 1rem;
+    cursor: pointer;
 
     input {
       width: 100%;

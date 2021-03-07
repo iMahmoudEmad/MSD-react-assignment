@@ -1,0 +1,41 @@
+@import "../../assets/styles/main.scss";
+
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+
+  .searchTitle,
+  .addSong {
+    color: #fff;
+  }
+
+  .searchTitle {
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+
+  .addSong {
+    background-color: $gray;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    padding: 0.685rem;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+
+    &:first-letter {
+      text-transform: capitalize;
+    }
+
+    &:hover {
+      border: 1px solid $red;
+      color: $red;
+      background-color: transparent;
+    }
+  }
+}

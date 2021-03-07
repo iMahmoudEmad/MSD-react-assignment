@@ -1,10 +1,10 @@
 import Layout from '../Components/Layout/Layout'
-import Rating from '../Components/Rating/Rating'
+import Search from '../Components/Search/Search'
 
 const Home = () => {
     return (
         <Layout>
-            <Rating />
+            <Search />
         </Layout>
     )
 }

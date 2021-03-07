@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../Navbar/Navbar'
+import './Layout.scss'
 
 const Layout = ({ children }) => {
     const handleLanguage = (res) => console.log('langValue', res.target.value);
@@ -10,7 +11,9 @@ const Layout = ({ children }) => {
                 <Navbar changeSearchVal={ handleLanguage } />
             </header>
             <main>
-                { children }
+                <div className="container">
+                    { children }
+                </div>
             </main>
         </>
     )
