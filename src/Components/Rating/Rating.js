@@ -11,7 +11,7 @@ const Rating = ({ starPoints, starColor }) => {
             starRatedColor={ starColor }
             starEmptyColor='gray'
             starDimension='20'
-            starSpacing={ '10px' }
+            starSpacing={ '5px' }
         />
     )
 }
