@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchSongsRequest } from '../../redux/actions/SongsActions';
-// import Song from './Song/Song';
+import Song from './Song/Song';
 
 const Songs = ({ songs, fetchSongs }) => {
     useEffect(() => {
@@ -11,10 +11,9 @@ const Songs = ({ songs, fetchSongs }) => {
 
     return (
         <div>
-            {songs.loading ? <h1>Loading...</h1> : songs.error ? (<h2>{ songs.err }</h2>) : <div><h2>User List</h2><div>{ songs }</div></div> }
-            {/* {loading ? <div>...Loading</div> : songs.map((song) => (
+            {songs.loading ? <div>...Loading</div> : songs.songs.map((song) => (
                 <Song song={ song } key={ song.id } inFavorite="false" />
-            )) } */}
+            )) }
         </div>
     )
 }
