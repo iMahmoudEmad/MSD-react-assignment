@@ -6,21 +6,21 @@ export const initialState = {
     songs: ''
 }
 
-export const songsReducer = (state = initialState, action) => {
-    switch (action.type) {
+export const songsReducer = (state = initialState, { type, songs, error }) => {
+    switch (type) {
         case RECEIVE_SONGS_DATA:
             return {
                 loading: false,
-                songs: action.songs,
+                songs,
                 error: ''
             }
         case FAILURE_SONGS_DATA:
             return {
                 loading: false,
                 songs: {},
-                error: 'Something went wrong!'
+                error: error
             }
         default:
-            return state
+            return { ...state }
     }
 }
