@@ -8,12 +8,14 @@ const Songs = ({ songs, fetchSongs }) => {
         fetchSongs();
         console.log(songs)
     }, []);
+    const page = 1;
 
     return (
         <div>
             {songs.loading ? <div>...Loading</div> : songs.songs.map((song) => (
                 <Song song={ song } key={ song.id } inFavorite="false" />
             )) }
+            <button onClick={ fetchSongsRequest(page++) }>Load more</button>
         </div>
     )
 }

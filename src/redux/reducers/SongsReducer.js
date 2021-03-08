@@ -1,4 +1,4 @@
-import { FETCH_ERROR, FETCH_SUCCESS } from "../actions/SongsTypes"
+import { FAILURE_SONGS_DATA, RECEIVE_SONGS_DATA } from "../actions/SongsTypes"
 
 export const initialState = {
     loading: true,
@@ -8,13 +8,13 @@ export const initialState = {
 
 export const songsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_SUCCESS:
+        case RECEIVE_SONGS_DATA:
             return {
                 loading: false,
-                songs: action.payload,
+                songs: action.songs,
                 error: ''
             }
-        case FETCH_ERROR:
+        case FAILURE_SONGS_DATA:
             return {
                 loading: false,
                 songs: {},
