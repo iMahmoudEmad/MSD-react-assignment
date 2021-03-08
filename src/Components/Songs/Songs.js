@@ -1,31 +1,34 @@
-import { useEffect, useState } from 'react'
-import Song from './Song/Song'
-import { BASE_URL } from '../../api'
-import axios from 'axios'
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchSongsRequest } from '../../redux/actions/SongsActions';
+// import Song from './Song/Song';
 
-const Songs = () => {
-    const useCustomHook = (url) => {
-        const [ songs, setSongs ] = useState(null);
-        const [ loading, setLoading ] = useState(true);
-
-        useEffect(async () => {
-            const data = await axios.get(url).then(res => res.data);
-            setSongs(data);
-            setLoading(false);
-        }, []);
-
-        return { songs, loading };
-    }
-
-    const { songs, loading } = useCustomHook(BASE_URL + 'songs')
+const Songs = ({ songs, fetchSongs }) => {
+    useEffect(() => {
+        fetchSongs();
+        console.log(songs)
+    }, []);
 
     return (
         <div>
-            {loading ? <div>...Loading</div> : songs.map((song) => (
+            {songs.loading ? <h1>Loading...</h1> : songs.error ? (<h2>{ songs.err }</h2>) : <div><h2>User List</h2><div>{ songs }</div></div> }
+            {/* {loading ? <div>...Loading</div> : songs.map((song) => (
                 <Song song={ song } key={ song.id } inFavorite="false" />
-            )) }
+            )) } */}
         </div>
     )
 }
 
-export default Songs
+const mapStateToProps = state => {
+    return {
+        songs: state
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchSongs: () => dispatch(fetchSongsRequest())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Songs)

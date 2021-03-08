@@ -1,20 +1,20 @@
-import axios from 'axios'
+import { FETCH_ERROR, FETCH_SUCCESS } from "../actions/SongsTypes"
 
-const initialState = {
+export const initialState = {
     loading: true,
     error: '',
     songs: ''
 }
 
-const reducer = (state = initialState, action) => {
+export const songsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'FETCH_SUCCESS':
+        case FETCH_SUCCESS:
             return {
                 loading: false,
                 songs: action.payload,
                 error: ''
             }
-        case 'FETCH_ERROR':
+        case FETCH_ERROR:
             return {
                 loading: false,
                 songs: {},
