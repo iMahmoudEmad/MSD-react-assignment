@@ -1,14 +1,15 @@
-import React from 'react'
+import { useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import './Layout.scss'
 
 const Layout = ({ children }) => {
-    const handleLanguage = (res) => console.log('langValue', res.target.value);
+    const [ searchValue, setSearchValue ] = useState('')
+    const getSearchValue = (res) => setSearchValue(res.target.value);
 
     return (
         <>
             <header>
-                <Navbar changeSearchVal={ handleLanguage } />
+                <Navbar changeSearchVal={ getSearchValue } />
             </header>
             <main>
                 <div className="container">
