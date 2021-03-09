@@ -1,4 +1,4 @@
-import { FAILURE_SONGS_DATA, RECEIVE_SONGS_DATA } from "../actions/SongsTypes"
+import { REQUEST_SONGS_DATA, FAILURE_SONGS_DATA, RECEIVE_SONGS_DATA } from "../actions/SongsTypes"
 
 export const initialState = {
     loading: true,
@@ -8,6 +8,13 @@ export const initialState = {
 
 export const songsReducer = (state = initialState, { type, songs, error }) => {
     switch (type) {
+        case REQUEST_SONGS_DATA:
+            return {
+                loading: true,
+                songs: [ ...state.songs ],
+                error: '',
+            }
+
         case RECEIVE_SONGS_DATA:
             return {
                 loading: false,
@@ -17,7 +24,7 @@ export const songsReducer = (state = initialState, { type, songs, error }) => {
         case FAILURE_SONGS_DATA:
             return {
                 loading: false,
-                songs: {},
+                songs: '',
                 error: error
             }
         default:
