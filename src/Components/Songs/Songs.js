@@ -1,19 +1,23 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchSongsRequest } from './../../redux/actions/SongsActions';
 import Song from './Song/Song';
 
-const page = 1;
+const Songs = ({ songs, songsData, updateData }) => {
+    const [ page, setPage ] = useState(1)
+    useEffect(() => songsData(), [ songsData, updateData ]);
 
-const Songs = ({ songs, songsData }) => {
-    useEffect(() => songsData(), []);
-
+    const updateSongsList = () => {
+        setPage(page + 1)
+        updateData(page);
+    }
 
     return (
         <div>
             {songs.loading ? <div>...Loading</div> : songs.songs.map((song) => (
                 <Song song={ song } key={ song.id } inFavorite="false" />
             )) }
+            <button onClick={ () => updateSongsList() }>Load More</button>
         </div>
     )
 }
@@ -24,7 +28,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        songsData: () => dispatch(fetchSongsRequest(page)),
+        songsData: () => dispatch(fetchSongsRequest(1)),
+        updateData: (pageNum) => dispatch(fetchSongsRequest(pageNum)),
     }
 };
 
