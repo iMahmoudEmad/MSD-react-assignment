@@ -14,7 +14,7 @@ const Songs = ({ songs, songsData }) => {
         songsData(searchVal, page);
     }
 
-    useEffect(() => songsData(searchVal, page), [ songsData, songsData, searchVal ]);
+    useEffect(() => songsData(searchVal, page), [ songsData, searchVal, page ]);
 
     return (
         <>

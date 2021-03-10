@@ -6,7 +6,8 @@ import './Song.scss'
 
 
 const Song = ({ song, inFavorite }) => {
-    const starColor = '#5844af';
+    const rateColor = '#5844af';
+    const addToFavColor = '#e05959';
     const [ isFavorite, setIsFavorite ] = useState(inFavorite)
 
     const favorite = () => setIsFavorite(!isFavorite);
@@ -15,7 +16,7 @@ const Song = ({ song, inFavorite }) => {
         if (isFavorite) {
             return <FavoriteBorder role="button" title="Add to favorite" />
         } else {
-            return <Favorite role="button" title="Remove from favorite" />
+            return <Favorite role="button" title="Remove from favorite" style={ { color: addToFavColor } } />
         }
     }
 
@@ -28,7 +29,7 @@ const Song = ({ song, inFavorite }) => {
                     <p>{ song.artist }</p>
                 </div>
                 <div className="songRate">
-                    <Rating starPoints={ song.level } starColor={ starColor } />
+                    <Rating starPoints={ song.level } rateColor={ rateColor } />
                     <span onClick={ favorite } role="button">
                         { checkIfSongAddedToFavorite() }
                     </span>
