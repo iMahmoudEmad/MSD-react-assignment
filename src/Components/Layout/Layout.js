@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import Navbar from '../Navbar/Navbar'
-import './Layout.scss'
+import { useState } from 'react';
+import { SongsContext } from '../../SongsContext';
+import Navbar from '../Navbar/Navbar';
+import './Layout.scss';
 
 const Layout = ({ children }) => {
-    const [ searchValue, setSearchValue ] = useState('')
+    let [ searchValue, setSearchValue ] = useState('')
     const getSearchValue = (res) => setSearchValue(res.target.value);
 
     return (
-        <>
+        <SongsContext.Provider value={ searchValue }>
             <header>
                 <Navbar changeSearchVal={ getSearchValue } />
             </header>
@@ -16,7 +17,7 @@ const Layout = ({ children }) => {
                     { children }
                 </div>
             </main>
-        </>
+        </SongsContext.Provider>
     )
 }
 
