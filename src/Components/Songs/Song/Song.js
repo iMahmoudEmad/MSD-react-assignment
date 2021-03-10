@@ -30,7 +30,7 @@ const Song = ({ song, inFavorite }) => {
                 </div>
                 <div className="songRate">
                     <Rating starPoints={ song.level } rateColor={ rateColor } />
-                    <span onClick={ favorite } role="button">
+                    <span onClick={ favorite } role="button" class="addToFavIconButton">
                         { checkIfSongAddedToFavorite() }
                     </span>
                 </div>
