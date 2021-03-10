@@ -5,7 +5,7 @@ import Loading from '../Loading/Loading';
 import { fetchSongsRequest } from './../../redux/actions/SongsActions';
 import Song from './Song/Song';
 
-const Songs = ({ songs, songsData, updateData, searchData }) => {
+const Songs = ({ songs, songsData, updateData }) => {
     const searchVal = useContext(SongsContext);
     const [ page, setPage ] = useState(1);
 
@@ -14,18 +14,15 @@ const Songs = ({ songs, songsData, updateData, searchData }) => {
         updateData(page);
     }
 
-    useEffect(() => {
-        songsData(searchVal, page)
-    }, [ songsData, updateData, searchData ]);
+    useEffect(() => songsData(searchVal, page), [ songsData, updateData, searchVal ]);
 
     return (
-        <div>
-            <h1>{ searchVal }</h1>
+        <>
             {songs.loading ? <Loading /> : songs.songs.map((song) => (
                 <Song song={ song } key={ song.id } inFavorite="false" />
             )) }
             <button onClick={ () => updateSongsList() }>Load More</button>
-        </div>
+        </>
     )
 }
 
