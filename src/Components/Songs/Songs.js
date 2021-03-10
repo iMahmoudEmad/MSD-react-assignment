@@ -5,16 +5,16 @@ import Loading from '../Loading/Loading';
 import { fetchSongsRequest } from './../../redux/actions/SongsActions';
 import Song from './Song/Song';
 
-const Songs = ({ songs, songsData, updateData }) => {
+const Songs = ({ songs, songsData }) => {
     const searchVal = useContext(SongsContext);
     const [ page, setPage ] = useState(1);
 
     const updateSongsList = () => {
         setPage(page + 1)
-        updateData(page);
+        songsData(searchVal, page);
     }
 
-    useEffect(() => songsData(searchVal, page), [ songsData, updateData, searchVal ]);
+    useEffect(() => songsData(searchVal, page), [ songsData, songsData, searchVal ]);
 
     return (
         <>
@@ -26,15 +26,9 @@ const Songs = ({ songs, songsData, updateData }) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return { songs: state }
-};
-
+const mapStateToProps = (state) => { return { songs: state } };
 const mapDispatchToProps = dispatch => {
-    return {
-        songsData: (search, pageNum) => dispatch(fetchSongsRequest({ search, pageNum })),
-        updateData: (pageNum) => dispatch(fetchSongsRequest({ pageNum })),
-    }
+    return { songsData: (search, pageNum) => dispatch(fetchSongsRequest({ search, pageNum })) }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Songs)
