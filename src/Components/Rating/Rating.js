@@ -1,4 +1,5 @@
-import StarRating from 'react-star-ratings'
+import StarRating from 'react-star-ratings';
+import './Rating.scss';
 
 const Rating = ({ starPoints, starColor }) => {
     const convertPointsToStar = (point = 0) => point / 3;

@@ -1,18 +1,18 @@
 @import "../../assets/styles/main.scss";
 
-.search {
+.filter {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 2rem;
 
-  .searchTitle,
+  .filterTitle,
   .addSong {
     color: #fff;
   }
 
-  .searchTitle {
+  .filterTitle {
     font-size: 1rem;
     font-weight: 300;
     margin-bottom: 0.5rem;

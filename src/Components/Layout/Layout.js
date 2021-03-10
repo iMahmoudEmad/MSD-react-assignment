@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { SongsContext } from '../../SongsContext';
 import Navbar from '../Navbar/Navbar';
+import Filter from '../../Components/Filter/Filter';
 import './Layout.scss';
 
 const Layout = ({ children }) => {
@@ -14,6 +15,7 @@ const Layout = ({ children }) => {
             </header>
             <main>
                 <div className="container">
+                    <Filter />
                     { children }
                 </div>
             </main>
