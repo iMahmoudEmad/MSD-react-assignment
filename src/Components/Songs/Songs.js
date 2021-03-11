@@ -31,11 +31,10 @@ const Songs = ({ songs, favorites, songsData, favoritesData }) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    console.log('state', state)
+const mapStateToProps = ({ songs, favorites }) => {
     return {
-        songs: state.songs,
-        favorites: state.favorites
+        songs,
+        favorites
     }
 };
 const mapDispatchToProps = dispatch => {
