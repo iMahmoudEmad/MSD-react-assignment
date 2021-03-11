@@ -11,7 +11,7 @@ export const songsReducer = (state = initialState, { type, songs, error }) => {
         case REQUEST_SONGS_DATA:
             return {
                 loading: true,
-                songs: [ ...state.songs ],
+                songs: state.songs,
                 error: '',
             }
         case RECEIVE_SONGS_DATA_WITH_SEARCH:

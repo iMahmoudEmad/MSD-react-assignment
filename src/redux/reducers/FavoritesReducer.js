@@ -1,4 +1,4 @@
-import { REQUEST_FAVORITES_DATA, RECEIVES_FAVORITES_DATA, FAILURE_FAVORITES_DATA } from '../types/FavoritesTypes';
+import { REQUEST_FAVORITES_DATA, RECEIVES_FAVORITES_DATA, ADD_FAVORITES_DATA, FAILURE_FAVORITES_DATA } from '../types/FavoritesTypes';
 
 export const initialState = {
     loading: true,
@@ -6,18 +6,24 @@ export const initialState = {
     favorites: ''
 }
 
-export const favoritesReducer = (state = initialState, { type, favorites, error }) => {
+export const favoritesReducer = (state = initialState, { type, favorites, favorite, error }) => {
     switch (type) {
         case REQUEST_FAVORITES_DATA:
             return {
                 loading: true,
-                favorites: [ ...state.favorites ],
+                favorites: state.favorites,
                 error: '',
             }
         case RECEIVES_FAVORITES_DATA:
             return {
                 loading: false,
-                favorites,
+                favorites: [ ...state.favorites, ...favorites ],
+                error: ''
+            }
+        case ADD_FAVORITES_DATA:
+            return {
+                loading: false,
+                favorites: [ ...state.favorites, favorite ],
                 error: ''
             }
         case FAILURE_FAVORITES_DATA:
