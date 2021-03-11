@@ -17,11 +17,7 @@ const Songs = ({ songs, favorites, getSongsData, getFavoritesData, addToFavorite
     const isSongAddedToFav = id => favorites.favorites.some(fav => fav.id === id);
 
     const addSongToFav = ({ id }) => {
-        if (!isSongAddedToFav(id)) {
-            addToFavorites({ id });
-        } else {
-            deleteFromFavorites(id)
-        };
+        (!isSongAddedToFav(id)) ? addToFavorites({ id }) : deleteFromFavorites(id);
     }
 
     useEffect(() => {
