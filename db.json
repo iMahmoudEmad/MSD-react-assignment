@@ -3697,5 +3697,21 @@
       "search": "jason mraz i'm yours"
     }
   ],
-  "favorites": []
+  "favorites": [
+    {
+      "id": "5b8f736fb3984c13548374af"
+    },
+    {
+      "id": "5b8e47deb3984c68ed8192e3"
+    },
+    {
+      "id": "5b8e471cb3984c68ed81926d"
+    },
+    {
+      "id": "5b8e447eb3984c68ed8190bf"
+    },
+    {
+      "id": "5b8e47a5b3984c68ed8192c3"
+    }
+  ]
 }

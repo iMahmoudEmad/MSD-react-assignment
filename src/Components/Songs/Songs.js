@@ -6,21 +6,18 @@ import Loading from '../Loading/Loading';
 import { fetchSongsRequest } from './../../redux/actions/SongsActions';
 import Song from './Song/Song';
 
-const Songs = ({ songs, favorites, songsData, favoritesData, addToFavorites, deleteFromFavorites }) => {
-    console.log('favorites.favoritesfavorites.favoritesfavorites.favorites', favorites.favorites)
+const Songs = ({ songs, favorites, getSongsData, getFavoritesData, addToFavorites, deleteFromFavorites }) => {
     const searchVal = useContext(SongsContext);
     const [ page, setPage ] = useState(1);
-    const [ favoritesList, setFavoritesList ] = useState([ ...favorites.favorites ])
 
     const updateSongsList = () => {
         setPage(page + 1)
-        songsData(searchVal, page);
+        getSongsData(searchVal, page);
     }
-    const isSongAddedToFav = id => favoritesList.some(fav => fav.id === id);
+    const isSongAddedToFav = id => favorites.favorites.some(fav => fav.id === id);
 
     const addSongToFav = ({ id }) => {
         if (!isSongAddedToFav(id)) {
-            setFavoritesList([ ...favoritesList, { id } ]);
             addToFavorites({ id });
         } else {
             deleteFromFavorites(id)
@@ -28,9 +25,9 @@ const Songs = ({ songs, favorites, songsData, favoritesData, addToFavorites, del
     }
 
     useEffect(() => {
-        songsData(searchVal, page);
-        favoritesData();
-    }, [ songsData, favoritesData, searchVal, page ]);
+        getSongsData(searchVal, page);
+        getFavoritesData();
+    }, [ getSongsData, getFavoritesData, searchVal, page ]);
 
     return (
         <>
@@ -49,8 +46,8 @@ const mapStateToProps = ({ songs, favorites }) => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        songsData: (search, pageNum) => dispatch(fetchSongsRequest({ search, pageNum })),
-        favoritesData: () => dispatch(fetchFavoritesRequest()),
+        getSongsData: (search, pageNum) => dispatch(fetchSongsRequest({ search, pageNum })),
+        getFavoritesData: () => dispatch(fetchFavoritesRequest()),
         addToFavorites: (id) => dispatch(addFavoriteRequest(id)),
         deleteFromFavorites: (id) => dispatch(deleteFromFavorites(id)),
     }
