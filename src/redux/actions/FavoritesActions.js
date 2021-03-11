@@ -14,3 +14,12 @@ export const fetchFavoritesRequest = () => {
             .catch(err => dispatch(failureFavirutesData(err.message)));
     }
 }
+
+export const addFavoriteRequest = (id) => {
+    return (dispatch) => {
+        dispatch(requestFavoritesData());
+        axios.post(`${ BASE_URL }/favorites`, id)
+            .then(res => { dispatch(receiveFavoritesData(res.data)) })
+            .catch(err => dispatch(failureFavirutesData(err.message)));
+    }
+}
