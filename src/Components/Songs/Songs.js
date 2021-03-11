@@ -24,7 +24,9 @@ const Songs = ({ songs, favorites, songsData, favoritesData }) => {
     return (
         <>
             {songs.loading ? <Loading /> : songs.songs.map((song) => (
-                <Song song={ song } key={ song.id } inFavorite={ checkIfSongAddedToFav(song.id) } />
+                <div>
+                    <Song song={ song } key={ song.id } isAddedToFav={ checkIfSongAddedToFav(song.id) } />
+                </div>
             )) }
             <button onClick={ () => updateSongsList() }>Load More</button>
         </>
@@ -32,10 +34,7 @@ const Songs = ({ songs, favorites, songsData, favoritesData }) => {
 }
 
 const mapStateToProps = ({ songs, favorites }) => {
-    return {
-        songs,
-        favorites
-    }
+    return { songs, favorites }
 };
 const mapDispatchToProps = dispatch => {
     return {

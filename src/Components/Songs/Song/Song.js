@@ -5,18 +5,18 @@ import { Favorite } from '@emotion-icons/material/Favorite'
 import './Song.scss'
 
 
-const Song = ({ song, inFavorite }) => {
+const Song = ({ song, isAddedToFav }) => {
     const rateColor = '#5844af';
     const addToFavColor = '#e05959';
-    const [ isFavorite, setIsFavorite ] = useState(inFavorite)
+    const [ isFavorite, setIsFavorite ] = useState(isAddedToFav)
 
-    const favorite = () => setIsFavorite(!isFavorite);
+    const toggleFavorite = () => setIsFavorite(!isFavorite);
 
     const checkIfSongAddedToFavorite = () => {
         if (isFavorite) {
-            return <FavoriteBorder role="button" title="Add to favorite" />
-        } else {
             return <Favorite role="button" title="Remove from favorite" style={ { color: addToFavColor } } />
+        } else {
+            return <FavoriteBorder role="button" title="Add to favorite" />
         }
     }
 
@@ -30,7 +30,7 @@ const Song = ({ song, inFavorite }) => {
                 </div>
                 <div className="songRate">
                     <Rating starPoints={ song.level } rateColor={ rateColor } />
-                    <span onClick={ favorite } role="button" class="addToFavIconButton">
+                    <span onClick={ toggleFavorite } role="button" className="addToFavIconButton">
                         { checkIfSongAddedToFavorite() }
                     </span>
                 </div>
