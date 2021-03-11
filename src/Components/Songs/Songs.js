@@ -5,6 +5,7 @@ import { SongsContext } from '../../SongsContext';
 import Loading from '../Loading/Loading';
 import { fetchSongsRequest } from './../../redux/actions/SongsActions';
 import Song from './Song/Song';
+import './Songs.scss'
 
 const Songs = ({ songs, favorites, getSongsData, getFavoritesData, addToFavorites, deleteFromFavorites }) => {
     const searchVal = useContext(SongsContext);
@@ -19,7 +20,6 @@ const Songs = ({ songs, favorites, getSongsData, getFavoritesData, addToFavorite
             return favorites.favorites.some(fav => fav.id === id)
         }
     };
-
     const addSongToFav = ({ id }) => {
         (!isSongAddedToFav(id)) ? addToFavorites({ id }) : deleteFromFavorites(id);
     }
@@ -29,14 +29,20 @@ const Songs = ({ songs, favorites, getSongsData, getFavoritesData, addToFavorite
         getFavoritesData();
     }, [ getSongsData, getFavoritesData, searchVal, page ]);
 
+    const checkIfLoadingWorks = () => {
+        if (!songs.loading) {
+            return (<div className="loadMore">
+                <button onClick={ () => updateSongsList() }>Load More</button>
+            </div>)
+        }
+    }
+
     return (
         <>
             {songs.loading ? <Loading /> : songs.songs.map((song) => (
-                <div>
-                    <Song song={ song } key={ song.id } isAddedToFav={ isSongAddedToFav(song.id) } addSongToFav={ addSongToFav } />
-                </div>
+                <Song song={ song } key={ song.id } isAddedToFav={ isSongAddedToFav(song.id) } addSongToFav={ addSongToFav } />
             )) }
-            <button onClick={ () => updateSongsList() }>Load More</button>
+            {checkIfLoadingWorks() }
         </>
     )
 }
