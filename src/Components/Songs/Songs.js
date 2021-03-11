@@ -14,7 +14,11 @@ const Songs = ({ songs, favorites, getSongsData, getFavoritesData, addToFavorite
         setPage(page + 1)
         getSongsData(searchVal, page);
     }
-    const isSongAddedToFav = id => favorites.favorites.some(fav => fav.id === id);
+    const isSongAddedToFav = id => {
+        if (favorites.favorites) {
+            return favorites.favorites.some(fav => fav.id === id)
+        }
+    };
 
     const addSongToFav = ({ id }) => {
         (!isSongAddedToFav(id)) ? addToFavorites({ id }) : deleteFromFavorites(id);
