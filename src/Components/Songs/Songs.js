@@ -1,23 +1,25 @@
 import { useState, useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
+import { fetchFavoritesRequest } from '../../redux/actions/FavoritesActions';
 import { SongsContext } from '../../SongsContext';
 import Loading from '../Loading/Loading';
 import { fetchSongsRequest } from './../../redux/actions/SongsActions';
 import Song from './Song/Song';
 
-const Songs = ({ songs, songsData }) => {
+const Songs = ({ songs, favorites, songsData, favoritesData }) => {
     const searchVal = useContext(SongsContext);
     const [ page, setPage ] = useState(1);
-    const [ favorites, setFavorites ] = useState([])
+    const [ favoritesList, setFavoritesList ] = useState([])
 
     const updateSongsList = () => {
         setPage(page + 1)
         songsData(searchVal, page);
     }
-    const checkIfSongAddedToFav = id => favorites.includes(id);
-    const addSongToFav = id => setFavorites(favorites.push(id));
+    const updateFavList = () => setFavoritesList(favorites);
+    const checkIfSongAddedToFav = id => favoritesList.includes(id);
+    const addSongToFav = id => setFavoritesList(favorites.push(id));
 
-    useEffect(() => songsData(searchVal, page), [ songsData, searchVal, page ]);
+    useEffect(() => songsData(searchVal, page), [ songsData, favoritesData, searchVal, page ]);
 
     return (
         <>
@@ -29,9 +31,18 @@ const Songs = ({ songs, songsData }) => {
     )
 }
 
-const mapStateToProps = (state) => { return { songs: state } };
+const mapStateToProps = (state) => {
+    console.log('state', state)
+    return {
+        songs: state.songs,
+        favorites: state.favorites
+    }
+};
 const mapDispatchToProps = dispatch => {
-    return { songsData: (search, pageNum) => dispatch(fetchSongsRequest({ search, pageNum })) }
+    return {
+        songsData: (search, pageNum) => dispatch(fetchSongsRequest({ search, pageNum })),
+        favoritesData: () => dispatch(fetchFavoritesRequest())
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Songs)
