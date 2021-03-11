@@ -19,7 +19,10 @@ const Songs = ({ songs, favorites, songsData, favoritesData }) => {
     const checkIfSongAddedToFav = id => favoritesList.includes(id);
     const addSongToFav = id => setFavoritesList(favorites.push(id));
 
-    useEffect(() => songsData(searchVal, page), [ songsData, favoritesData, searchVal, page ]);
+    useEffect(() => {
+        favoritesData();
+        songsData(searchVal, page);
+    }, [ songsData, favoritesData, searchVal, page ]);
 
     return (
         <>
