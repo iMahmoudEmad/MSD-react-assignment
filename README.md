@@ -38,6 +38,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Run the project
 
+- Open another `terminal` inside the project folder and write `yarn install` if you used `Yarn PKG` or write 'npm i' if you used `NPM`.
 - Open another `terminal` inside the project folder and write **yarn start-api** to run the `JSON-server` to listen on `db.json` file.
 - Open the `terminal` inside the project folder and write **yarn start** to run the react project.
 
