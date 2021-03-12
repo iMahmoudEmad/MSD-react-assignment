@@ -64,7 +64,15 @@
 
   @media (max-width: 768px) {
     .songDetailsTitle {
+      width: 100%;
       font-size: 0.75rem;
+
+      h3 {
+        width: 85%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
 
     .songRate {
