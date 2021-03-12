@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { REQUEST_SONGS_DATA, FAILURE_SONGS_DATA, RECEIVE_SONGS_DATA, RECEIVE_SONGS_DATA_WITH_SEARCH } from '../types/SongsTypes';
+import { REQUEST_SONGS_DATA, FAILURE_SONGS_DATA, RECEIVE_SONGS_DATA, RECEIVE_SONGS_DATA_WITH_SEARCH } from '../types/songsTypes';
 
 const requestSongsData = () => ({ type: REQUEST_SONGS_DATA, loading: true });
 const receiveSongsData = (songs) => ({ type: RECEIVE_SONGS_DATA, songs });

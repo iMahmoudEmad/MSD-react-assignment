@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
-import { fetchFavoritesRequest, addFavoriteRequest, deleteFromFavorites } from '../../redux/actions/FavoritesActions';
+import { fetchFavoritesRequest, addFavoriteRequest, deleteFromFavorites } from '../../redux/actions/favoritesActions';
 import { SongsContext } from '../../SongsContext';
 import Loading from '../Loading/Loading';
-import { fetchSongsRequest } from './../../redux/actions/SongsActions';
+import { fetchSongsRequest } from '../../redux/actions/songsActions';
 import Song from './Song/Song';
 import './Songs.scss'
 

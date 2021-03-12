@@ -1,4 +1,4 @@
-import { REQUEST_SONGS_DATA, FAILURE_SONGS_DATA, RECEIVE_SONGS_DATA, RECEIVE_SONGS_DATA_WITH_SEARCH } from "../types/SongsTypes"
+import { REQUEST_SONGS_DATA, FAILURE_SONGS_DATA, RECEIVE_SONGS_DATA, RECEIVE_SONGS_DATA_WITH_SEARCH } from "../types/songsTypes"
 
 export const initialState = {
     loading: true,

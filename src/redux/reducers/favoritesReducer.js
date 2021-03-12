@@ -1,4 +1,4 @@
-import { REQUEST_FAVORITES_DATA, RECEIVES_FAVORITES_DATA, ADD_FAVORITES_DATA, FAILURE_FAVORITES_DATA } from '../types/FavoritesTypes';
+import { REQUEST_FAVORITES_DATA, RECEIVES_FAVORITES_DATA, ADD_FAVORITES_DATA, FAILURE_FAVORITES_DATA } from '../types/favoritesTypes';
 
 export const initialState = {
     loading: true,
