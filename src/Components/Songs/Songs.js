@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { fetchFavoritesRequest } from '../../redux/actions/favoritesActions';
 import { SongsContext } from '../../SongsContext';
 import Loading from '../Loading/Loading';
@@ -7,24 +7,25 @@ import { fetchSongsRequest } from '../../redux/actions/songsActions';
 import Song from './Song/Song';
 import './Songs.scss'
 
-const Songs = ({ songs, favorites, getSongsData, getFavoritesData }) => {
+const Songs = ({ songs, favorites }) => {
     const searchVal = useContext(SongsContext);
     const [ page, setPage ] = useState(1);
+    const dispatch = useDispatch();
 
     const updateSongsList = () => {
         setPage(page + 1)
-        getSongsData(searchVal, page);
+        dispatch(fetchSongsRequest(searchVal, page));
     }
     const isSongAddedToFav = id => {
         if (favorites.favorites) {
-            return favorites.favorites.some(fav => fav.id === id)
+            return favorites.favorites.some(fav => fav.id === id);
         }
     };
 
     useEffect(() => {
-        getSongsData(searchVal, page);
-        getFavoritesData();
-    }, [ getSongsData, getFavoritesData, searchVal, page ]);
+        dispatch(fetchSongsRequest({ search: searchVal, pageNum: page }));
+        dispatch(fetchFavoritesRequest());
+    }, [ dispatch, searchVal, page ]);
 
     const checkIfLoadingWorks = () => {
         if (!songs.loading) {
@@ -49,8 +50,8 @@ const mapStateToProps = ({ songs, favorites }) => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        getSongsData: (search, pageNum) => dispatch(fetchSongsRequest({ search, pageNum })),
-        getFavoritesData: () => dispatch(fetchFavoritesRequest()),
+        //     getSongsData: (search, pageNum) => dispatch(fetchSongsRequest({ search, pageNum })),
+        //     getFavoritesData: () => dispatch(fetchFavoritesRequest()),
     }
 };
 
