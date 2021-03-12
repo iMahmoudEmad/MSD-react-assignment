@@ -31,16 +31,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [ ] Write testing, (**I have work with unit testing before you can check the previous unit test code from [Here](https://github.com/iMahmoudEmad/react-unit-test-example)**).
 - [x] Add readable commits with **`Github`**
 
-# Note
-
-- I want to mention that I was only able to work on this task for about **4** to **7** hours in the last week, also this first time to work with `Redux` integration with **APIs**.
-- I have read more about **`infinite scroll`** but I didn't get a free time to built it for sorry, if I added it it will be the first time applied it in a project:
-  - also I have read more about it from this list
-    - [Medium](https://medium.com/@manishajmera27/infinite-scrolling-in-react-js-without-using-any-third-party-library-c9f4a6198115)
-    - [Youtube 1](https://www.youtube.com/watch?v=gk_6BKiy6X4), [Youtube 2](https://www.youtube.com/watch?v=NZKUirTtxcg)
-    - [Dev.to](https://dev.to/jean182/infinite-scrolling-using-redux-and-sagas-part-ii-113l)
-    - [loserkid.io](https://loserkid.io/infinite-scroll-with-redux-and-sagas-part-i/) (`I know he was implement it with` **`Saga`** `but I visit it to know how to make it with native JS not with a third party libaray`).`
-
 # Third party library
 
 - react-star-ratings.
@@ -54,3 +44,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Build the project
 
 - Open the `terminal` inside the project folder and write **yarn build** inside it.
+
+# Note
+
+- I want to mention that I was only able to work on this task for about **4** to **7** hours in the last week, also this first time to work with `Redux` integration with **APIs**.
+- I have read more about **`infinite scroll`** but I didn't get a free time to built it for sorry, if I added it it will be the first time applied it in a project:
+  - also I have read more about it from this list
+    - [Medium](https://medium.com/@manishajmera27/infinite-scrolling-in-react-js-without-using-any-third-party-library-c9f4a6198115)
+    - [Youtube 1](https://www.youtube.com/watch?v=gk_6BKiy6X4), [Youtube 2](https://www.youtube.com/watch?v=NZKUirTtxcg)
+    - [Dev.to](https://dev.to/jean182/infinite-scrolling-using-redux-and-sagas-part-ii-113l)
+    - [loserkid.io](https://loserkid.io/infinite-scroll-with-redux-and-sagas-part-i/) (`I know he was implement it with` **`Saga`** `but I visit it to know how to make it with native JS not with a third party libaray`).`
+
+# Important note
+
+- I want to apologize for the things that I have not finished with yet, but if you check the last email I sent you will find that I mentioned that I'm very busy in this period and to the 15th of March 2021.
