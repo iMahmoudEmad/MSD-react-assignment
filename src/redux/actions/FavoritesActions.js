@@ -1,6 +1,5 @@
 import { REQUEST_FAVORITES_DATA, RECEIVES_FAVORITES_DATA, ADD_FAVORITES_DATA, DELETE_FAVORITES_DATA, FAILURE_FAVORITES_DATA } from '../types/FavoritesTypes';
 import axios from 'axios';
-import { BASE_URL } from '../../api';
 
 const requestFavoritesData = () => ({ type: REQUEST_FAVORITES_DATA });
 const receiveFavoritesData = (favorites) => ({ type: RECEIVES_FAVORITES_DATA, favorites });
@@ -11,7 +10,7 @@ const failureFavirutesData = (error) => ({ type: FAILURE_FAVORITES_DATA, error }
 export const fetchFavoritesRequest = () => {
     return (dispatch) => {
         dispatch(requestFavoritesData());
-        axios.get(`${ BASE_URL }/favorites`)
+        axios.get(`/favorites`)
             .then(res => dispatch(receiveFavoritesData(res.data)))
             .catch(err => dispatch(failureFavirutesData(err.message)));
     }
@@ -19,7 +18,7 @@ export const fetchFavoritesRequest = () => {
 
 export const addFavoriteRequest = (id) => {
     return (dispatch) => {
-        axios.post(`${ BASE_URL }/favorites`, id)
+        axios.post('/favorites', id)
             .then(res => { dispatch(addFavoritesData(res.data)) })
             .catch(err => dispatch(failureFavirutesData(err.message)));
     }
@@ -27,7 +26,7 @@ export const addFavoriteRequest = (id) => {
 
 export const deleteFromFavorites = (id) => {
     return (dispatch) => {
-        axios.delete(`${ BASE_URL }/favorites/${ id }`)
+        axios.delete(`/favorites/${ id }`)
             .then(res => { dispatch(deleteFromFavoritesData(res.data)) })
             .catch(err => dispatch(failureFavirutesData(err.message)));
     }

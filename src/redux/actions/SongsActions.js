@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { REQUEST_SONGS_DATA, FAILURE_SONGS_DATA, RECEIVE_SONGS_DATA, RECEIVE_SONGS_DATA_WITH_SEARCH } from '../types/SongsTypes';
-import { BASE_URL } from '../../api';
 
 const requestSongsData = () => ({ type: REQUEST_SONGS_DATA, loading: true });
 const receiveSongsData = (songs) => ({ type: RECEIVE_SONGS_DATA, songs });
@@ -10,7 +9,7 @@ const failureSongsData = (error) => ({ type: FAILURE_SONGS_DATA, error });
 export const fetchSongsRequest = ({ pageNum = 1, search = '', limit = 12 }) => {
     return (dispatch) => {
         dispatch(requestSongsData());
-        axios.get(`${ BASE_URL }/songs?q=${ search }&_page=${ pageNum }&_limit=${ limit }`)
+        axios.get(`/songs?q=${ search }&_page=${ pageNum }&_limit=${ limit }`)
             .then(res => {
                 (search) ?
                     dispatch(receiveSongsDataWithSearch(res.data)) :
