@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
-import { fetchFavoritesRequest, addFavoriteRequest, deleteFromFavorites } from '../../redux/actions/favoritesActions';
+import { fetchFavoritesRequest } from '../../redux/actions/favoritesActions';
 import { SongsContext } from '../../SongsContext';
 import Loading from '../Loading/Loading';
 import { fetchSongsRequest } from '../../redux/actions/songsActions';
 import Song from './Song/Song';
 import './Songs.scss'
 
-const Songs = ({ songs, favorites, getSongsData, getFavoritesData, addToFavorites, deleteFromFavorites }) => {
+const Songs = ({ songs, favorites, getSongsData, getFavoritesData }) => {
     const searchVal = useContext(SongsContext);
     const [ page, setPage ] = useState(1);
 
@@ -20,9 +20,6 @@ const Songs = ({ songs, favorites, getSongsData, getFavoritesData, addToFavorite
             return favorites.favorites.some(fav => fav.id === id)
         }
     };
-    const addSongToFav = ({ id }) => {
-        (!isSongAddedToFav(id)) ? addToFavorites({ id }) : deleteFromFavorites(id);
-    }
 
     useEffect(() => {
         getSongsData(searchVal, page);
@@ -40,7 +37,7 @@ const Songs = ({ songs, favorites, getSongsData, getFavoritesData, addToFavorite
     return (
         <>
             {songs.loading ? <Loading /> : songs.songs.map((song) => (
-                <Song song={ song } key={ song.id } isAddedToFav={ isSongAddedToFav(song.id) } addSongToFav={ addSongToFav } />
+                <Song song={ song } key={ song.id } isAddedToFav={ isSongAddedToFav(song.id) } />
             )) }
             {checkIfLoadingWorks() }
         </>
@@ -54,8 +51,6 @@ const mapDispatchToProps = dispatch => {
     return {
         getSongsData: (search, pageNum) => dispatch(fetchSongsRequest({ search, pageNum })),
         getFavoritesData: () => dispatch(fetchFavoritesRequest()),
-        addToFavorites: (id) => dispatch(addFavoriteRequest(id)),
-        deleteFromFavorites: (id) => dispatch(deleteFromFavorites(id)),
     }
 };
 

@@ -3,23 +3,23 @@ import Rating from '../../Rating/Rating'
 import { FavoriteBorder } from '@emotion-icons/material/FavoriteBorder'
 import { Favorite } from '@emotion-icons/material/Favorite'
 import './Song.scss'
+import { useDispatch } from 'react-redux'
+import { addFavoriteRequest, deleteFromFavorites } from '../../../redux/actions/favoritesActions'
 
 
-const Song = ({ song, isAddedToFav, addSongToFav }) => {
+const Song = ({ song, isAddedToFav }) => {
     const rateColor = '#5844af';
     const addToFavColor = '#e05959';
-    const [ isFavorite, setIsFavorite ] = useState(isAddedToFav)
+    const [ isFavorite, setIsFavorite ] = useState(isAddedToFav);
+    const dispatch = useDispatch();
 
-    const toggleFavorite = (id) => {
-        setIsFavorite(!isFavorite);
-        addSongToFav({ id })
-    }
+    const toggleFavorite = (id) => setIsFavorite(!isFavorite);
 
     const checkIfSongAddedToFavorite = () => {
         if (isFavorite) {
-            return <Favorite role="button" title="Remove from favorite" style={ { color: addToFavColor } } />
+            return <Favorite role="button" onClick={ () => dispatch(deleteFromFavorites(song.id)) } title="Remove from favorite" style={ { color: addToFavColor } } />
         } else {
-            return <FavoriteBorder role="button" title="Add to favorite" />
+            return <FavoriteBorder role="button" onClick={ () => dispatch(addFavoriteRequest({ id: song.id })) } title="Add to favorite" />
         }
     }
 
